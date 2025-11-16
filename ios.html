@@ -431,7 +431,7 @@
           const shortDesc = tour.short_description || tour.description || '';
           const truncatedDesc = shortDesc.length > 120 ? shortDesc.substring(0, 120) + '...' : shortDesc;
           
-          const tourUrl = tour.id ? `/tour.html?id=${tour.id}` : '#';
+          const tourUrl = tour.id ? `/tour/${tour.id}` : '#';
           
           return `
             <div class="tour-card" onclick="window.location.href='${tourUrl}'">

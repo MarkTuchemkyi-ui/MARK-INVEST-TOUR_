@@ -106,6 +106,16 @@ app.get('/admin/login.html', (req, res) => {
 });
 
 app.get('/tour/:id', (req, res) => {
+  // Проверяем, является ли устройство iOS
+  const userAgent = req.headers['user-agent'] || '';
+  const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+  
+  // Для iOS отдаём упрощённую версию
+  if (isIOS) {
+    return res.sendFile(path.join(__dirname, 'ios-tour.html'));
+  }
+  
+  // Для остальных устройств - обычная версия
   res.sendFile(path.join(__dirname, 'tour.html'));
 });
 

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>MARK INVEST TOUR | Детальная информация о туре</title>
+  <meta name="description" content="Подробная информация о туре" />
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+  <link rel="apple-touch-icon" type="image/png" href="/assets/images/180.png" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+      color: #ffffff;
+      background: #050505;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .logo span {
+      color: #ff4b4b;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 8px;
+      -webkit-tap-highlight-color: rgba(255, 75, 75, 0.2);
+    }
+
+    .back-btn:active {
+      opacity: 0.7;
+    }
+
+    /* Hero Section */
+    .tour-hero {
+      position: relative;
+      width: 100%;
+      min-height: 50vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 32px 16px;
+    }
+
+    .tour-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    }
+
+    .tour-hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .tour-title {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .tour-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(245,244,240,0.8);
+    }
+
+    .tour-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Content Section */
+    .tour-content {
+      padding: 32px 16px;
+      background: #050505;
+    }
+
+    .tour-section {
+      margin-bottom: 32px;
+    }
+
+    .tour-section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .tour-price {
+      font-size: 32px;
+      font-weight: 600;
+      color: #ff4b4b;
+      margin-bottom: 24px;
+    }
+
+    .tour-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(245,244,240,0.9);
+      margin-bottom: 24px;
+    }
+
+    .tour-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tour-detail-item {
+      background: rgba(15,15,15,0.86);
+      border: 1px solid rgba(245,244,240,0.18);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .tour-detail-label {
+      font-size: 12px;
+      color: rgba(245,244,240,0.6);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tour-detail-value {
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    /* Gallery */
+    .tour-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tour-gallery-item {
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    /* Booking Form */
+    .booking-section {
+      background: rgba(15,15,15,0.5);
+      padding: 32px 16px;
+      border-radius: 16px;
+      margin-top: 32px;
+    }
+
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 14px;
+      color: rgba(245,244,240,0.8);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(245,244,240,0.18);
+      background: rgba(15,15,15,0.86);
+      color: #ffffff;
+      font-size: 15px;
+      font-family: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #ff4b4b;
+    }
+
+    .form-input::placeholder {
+      color: rgba(245,244,240,0.5);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: none;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      -webkit-tap-highlight-color: rgba(255, 75, 75, 0.2);
+    }
+
+    .btn:active {
+      opacity: 0.8;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff4b4b, #ff7a45);
+      color: #ffffff;
+      width: 100%;
+    }
+
+    /* Loading & Error States */
+    .loading, .error {
+      text-align: center;
+      padding: 60px 16px;
+      color: rgba(245,244,240,0.6);
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 75, 75, 0.3);
+      border-top-color: #ff4b4b;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .error {
+      color: #ff4b4b;
+    }
+
+    /* Contacts */
+    .contacts {
+      padding: 32px 16px;
+      text-align: center;
+      background: #050505;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contacts-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .contacts-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contacts-link {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 16px;
+      -webkit-tap-highlight-color: rgba(255, 75, 75, 0.2);
+    }
+
+    .contacts-link:active {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <button class="back-btn" onclick="window.history.back()">← Назад</button>
+    <div class="logo">MARK INVEST<span>TOUR</span></div>
+    <div style="width: 60px;"></div> <!-- Spacer for centering -->
+  </header>
+
+  <div id="loading" class="loading">
+    <div class="loading-spinner"></div>
+    <p style="margin-top: 16px;">Загрузка тура...</p>
+  </div>
+
+  <div id="error" class="error" style="display: none;">
+    <p>Ошибка загрузки тура</p>
+  </div>
+
+  <div id="tour-content" style="display: none;">
+    <section class="tour-hero" id="tour-hero">
+      <div class="tour-hero-content">
+        <h1 class="tour-title" id="tour-title">Загрузка...</h1>
+        <div class="tour-meta" id="tour-meta"></div>
+      </div>
+    </section>
+
+    <section class="tour-content">
+      <div class="tour-section">
+        <div class="tour-price" id="tour-price" style="display: none;"></div>
+        <div class="tour-description" id="tour-description"></div>
+      </div>
+
+      <div class="tour-section" id="tour-details-section" style="display: none;">
+        <h2 class="tour-section-title">Детали тура</h2>
+        <div class="tour-details" id="tour-details"></div>
+      </div>
+
+      <div class="tour-section" id="tour-gallery-section" style="display: none;">
+        <h2 class="tour-section-title">Галерея</h2>
+        <div class="tour-gallery" id="tour-gallery"></div>
+      </div>
+
+      <div class="booking-section">
+        <h2 class="tour-section-title">Забронировать тур</h2>
+        <form id="booking-form" class="booking-form">
+          <div class="form-group">
+            <label class="form-label" for="booking-name">Имя</label>
+            <input type="text" id="booking-name" class="form-input" placeholder="Ваше имя" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="booking-phone">Телефон</label>
+            <input type="tel" id="booking-phone" class="form-input" placeholder="+7 (999) 123-45-67" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="booking-email">Email</label>
+            <input type="email" id="booking-email" class="form-input" placeholder="your@email.com" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          <div id="booking-success" style="display: none; color: #4caf50; text-align: center; margin-top: 16px;">
+            Спасибо! Ваша заявка отправлена.
+          </div>
+          <div id="booking-error" style="display: none; color: #ff4b4b; text-align: center; margin-top: 16px;">
+            Ошибка отправки заявки. Попробуйте позже.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="contacts">
+      <h3 class="contacts-title">Свяжитесь с нами</h3>
+      <div class="contacts-links">
+        <a href="tel:+79259009000" class="contacts-link">+7 925 900 9000</a>
+        <a href="https://api.whatsapp.com/send/?phone=79259009000" target="_blank" class="contacts-link">WhatsApp</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const API_URL = window.API_URL || '/api';
+
+    // Получение ID тура из URL
+    function getTourIdFromUrl() {
+      const path = window.location.pathname;
+      const match = path.match(/\/tour\/(\d+)/);
+      if (match) return parseInt(match[1]);
+      
+      // Fallback: проверяем query параметр
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      return id ? parseInt(id) : null;
+    }
+
+    // Форматирование даты
+    function formatDate(dateString) {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('ru-RU', { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
+      });
+    }
+
+    // Форматирование диапазона дат
+    function formatDateRange(startDate, endDate) {
+      if (!startDate && !endDate) return '';
+      if (!endDate) return formatDate(startDate);
+      
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      
+      if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
+        return `${start.getDate()} - ${end.getDate()} ${end.toLocaleDateString('ru-RU', { month: 'long' })} ${end.getFullYear()}`;
+      } else {
+        return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+      }
+    }
+
+    // Показать ошибку
+    function showError(message) {
+      const loadingEl = document.getElementById('loading');
+      const errorEl = document.getElementById('error');
+      const contentEl = document.getElementById('tour-content');
+      
+      if (loadingEl) loadingEl.style.display = 'none';
+      if (contentEl) contentEl.style.display = 'none';
+      if (errorEl) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = message || 'Ошибка загрузки тура';
+      }
+    }
+
+    // Загрузка данных тура
+    async function loadTourData() {
+      const tourId = getTourIdFromUrl();
+      
+      if (!tourId) {
+        showError('Неверный ID тура');
+        return;
+      }
+      
+      try {
+        const response = await fetch(`${API_URL}/tours/${tourId}`);
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            showError('Тур не найден');
+          } else {
+            showError('Ошибка загрузки тура');
+          }
+          return;
+        }
+        
+        const tour = await response.json();
+        
+        if (!tour || !tour.id) {
+          showError('Получены некорректные данные тура');
+          return;
+        }
+        
+        displayTourData(tour);
+      } catch (error) {
+        console.error('Ошибка загрузки тура:', error);
+        showError('Ошибка подключения к серверу');
+      }
+    }
+
+    // Отображение данных тура
+    function displayTourData(tour) {
+      const loadingEl = document.getElementById('loading');
+      const errorEl = document.getElementById('error');
+      const contentEl = document.getElementById('tour-content');
+      
+      if (loadingEl) loadingEl.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'none';
+      if (contentEl) contentEl.style.display = 'block';
+      
+      // Title
+      document.title = `${tour.title} | MARK INVEST TOUR`;
+      
+      // Hero image
+      const heroEl = document.getElementById('tour-hero');
+      if (heroEl && tour.image) {
+        const imageUrl = tour.image.startsWith('http') ? tour.image : `/uploads/${tour.image}`;
+        heroEl.style.backgroundImage = `url('${imageUrl}')`;
+      }
+      
+      // Title
+      const titleEl = document.getElementById('tour-title');
+      if (titleEl) titleEl.textContent = tour.title || 'Тур';
+      
+      // Meta
+      const metaEl = document.getElementById('tour-meta');
+      if (metaEl) {
+        const metaItems = [];
+        if (tour.date_start || tour.date_end) {
+          const dateRange = formatDateRange(tour.date_start, tour.date_end);
+          if (dateRange) metaItems.push(`<div class="tour-meta-item">📅 ${dateRange}</div>`);
+        }
+        if (tour.duration) {
+          metaItems.push(`<div class="tour-meta-item">⏱ ${tour.duration}</div>`);
+        }
+        if (tour.location) {
+          metaItems.push(`<div class="tour-meta-item">📍 ${tour.location}</div>`);
+        }
+        metaEl.innerHTML = metaItems.join('');
+      }
+      
+      // Price
+      const priceEl = document.getElementById('tour-price');
+      if (priceEl && tour.price) {
+        priceEl.textContent = `${tour.price.toLocaleString('ru-RU')} ₽`;
+        priceEl.style.display = 'block';
+      }
+      
+      // Description
+      const descEl = document.getElementById('tour-description');
+      if (descEl) {
+        descEl.textContent = tour.description || tour.short_description || 'Описание тура отсутствует';
+      }
+      
+      // Details
+      const detailsEl = document.getElementById('tour-details');
+      const detailsSection = document.getElementById('tour-details-section');
+      if (detailsEl) {
+        const details = [];
+        if (tour.duration) {
+          details.push(`
+            <div class="tour-detail-item">
+              <div class="tour-detail-label">Длительность</div>
+              <div class="tour-detail-value">${tour.duration}</div>
+            </div>
+          `);
+        }
+        if (tour.location) {
+          details.push(`
+            <div class="tour-detail-item">
+              <div class="tour-detail-label">Место</div>
+              <div class="tour-detail-value">${tour.location}</div>
+            </div>
+          `);
+        }
+        if (tour.max_participants) {
+          const available = tour.max_participants - (tour.current_participants || 0);
+          details.push(`
+            <div class="tour-detail-item">
+              <div class="tour-detail-label">Доступно мест</div>
+              <div class="tour-detail-value">${available} из ${tour.max_participants}</div>
+            </div>
+          `);
+        }
+        if (details.length > 0) {
+          detailsEl.innerHTML = details.join('');
+          if (detailsSection) detailsSection.style.display = 'block';
+        }
+      }
+      
+      // Gallery (упрощённая версия - только одно изображение)
+      const galleryEl = document.getElementById('tour-gallery');
+      const gallerySection = document.getElementById('tour-gallery-section');
+      if (galleryEl && tour.image) {
+        const imageUrl = tour.image.startsWith('http') ? tour.image : `/uploads/${tour.image}`;
+        galleryEl.innerHTML = `<img src="${imageUrl}" alt="${tour.title}" class="tour-gallery-item" />`;
+        if (gallerySection) gallerySection.style.display = 'block';
+      }
+    }
+
+    // Обработка формы бронирования
+    function initBookingForm() {
+      const form = document.getElementById('booking-form');
+      if (!form) return;
+      
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const tourId = getTourIdFromUrl();
+        if (!tourId) {
+          alert('Ошибка: ID тура не найден');
+          return;
+        }
+        
+        const name = document.getElementById('booking-name').value.trim();
+        const phone = document.getElementById('booking-phone').value.trim();
+        const email = document.getElementById('booking-email').value.trim();
+        
+        if (!name || !phone || !email) {
+          alert('Заполните все поля');
+          return;
+        }
+        
+        const successEl = document.getElementById('booking-success');
+        const errorEl = document.getElementById('booking-error');
+        
+        try {
+          const response = await fetch(`${API_URL}/applications`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              tour_id: tourId,
+              name,
+              phone,
+              email,
+            }),
+          });
+          
+          if (!response.ok) {
+            throw new Error('Ошибка отправки заявки');
+          }
+          
+          if (successEl) {
+            successEl.style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+              successEl.style.display = 'none';
+            }, 5000);
+          }
+        } catch (error) {
+          console.error('Ошибка бронирования:', error);
+          if (errorEl) {
+            errorEl.style.display = 'block';
+            setTimeout(() => {
+              errorEl.style.display = 'none';
+            }, 5000);
+          }
+        }
+      });
+    }
+
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTourData();
+      initBookingForm();
+    });
+  </script>
+</body>
+</html>
+
