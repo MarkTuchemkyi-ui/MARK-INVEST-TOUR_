@@ -7,7 +7,6 @@ const express = require('express');
 const router = express.Router();
 const tourController = require('../controllers/tour.controller');
 const { authenticateToken } = require('../middleware/auth.middleware');
-const { validateTourData } = require('../middleware/validation.middleware');
 
 /**
  * @swagger
@@ -148,7 +147,7 @@ router.get('/:id', tourController.getById);
  *       400:
  *         description: Ошибка валидации
  */
-router.post('/', authenticateToken, validateTourData, tourController.create);
+router.post('/', authenticateToken, tourController.create);
 
 /**
  * @swagger
@@ -213,7 +212,7 @@ router.post('/', authenticateToken, validateTourData, tourController.create);
  *       404:
  *         description: Тур не найден
  */
-router.put('/:id', authenticateToken, validateTourData, tourController.update);
+router.put('/:id', authenticateToken, tourController.update);
 
 /**
  * @swagger
