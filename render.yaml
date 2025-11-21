@@ -1,0 +1,26 @@
+# Конфигурация для автоматического деплоя на Render.com
+# Документация: https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: mark-invest-tour
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        fromService:
+          type: web
+          name: mark-invest-tour
+          property: port
+    # Подключение диска для персистентного хранения БД
+    # Раскомментируйте после создания диска в панели Render
+    # disks:
+    #   - name: database-disk
+    #     mountPath: /opt/render/project/src/data
+
+# Диск нужно создать вручную через панель Render.com
+# Инструкции см. в файле RENDER_SETUP.md
+

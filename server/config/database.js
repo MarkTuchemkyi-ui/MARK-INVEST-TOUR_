@@ -4,6 +4,8 @@
 
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
 const logger = require('../utils/logger');
 
 let db = null;
@@ -14,7 +16,41 @@ let db = null;
  */
 function initDatabase() {
   return new Promise((resolve, reject) => {
-    const dbPath = process.env.DB_PATH || 'travel.db';
+    // Определяем путь к базе данных
+    // Приоритет: DB_PATH > Railway Volume > Render Disk > локальный путь
+    let dbPath = process.env.DB_PATH;
+    
+    if (!dbPath) {
+      // Проверяем Railway Volume (Railway предоставляет переменную RAILWAY_VOLUME_MOUNT_PATH)
+      const railwayVolumePath = process.env.RAILWAY_VOLUME_MOUNT_PATH;
+      if (railwayVolumePath && fs.existsSync(railwayVolumePath)) {
+        dbPath = path.join(railwayVolumePath, 'travel.db');
+        logger.log('Обнаружен Railway Volume, используем путь:', dbPath);
+      } else {
+        // Проверяем Render Disk (для обратной совместимости)
+        const renderDiskPath = '/opt/render/project/src/data';
+        if (fs.existsSync(renderDiskPath)) {
+          dbPath = path.join(renderDiskPath, 'travel.db');
+          logger.log('Обнаружен Render Disk, используем путь:', dbPath);
+        } else {
+          // Локальная разработка или другой хостинг
+          dbPath = 'travel.db';
+        }
+      }
+    }
+    
+    // Создаем директорию для БД, если её нет
+    const dbDir = path.dirname(dbPath);
+    if (dbDir !== '.' && !fs.existsSync(dbDir)) {
+      try {
+        fs.mkdirSync(dbDir, { recursive: true });
+        logger.log('Создана директория для БД:', dbDir);
+      } catch (mkdirErr) {
+        logger.error('Ошибка создания директории для БД:', mkdirErr.message);
+        // Продолжаем выполнение - возможно, директория будет создана автоматически
+      }
+    }
+    
     db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
         logger.error('Ошибка подключения к БД:', err.message);
