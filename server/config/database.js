@@ -21,11 +21,12 @@ function initDatabase() {
     let dbPath = process.env.DB_PATH;
     
     if (!dbPath) {
-      // Проверяем Railway Volume (Railway предоставляет переменную RAILWAY_VOLUME_MOUNT_PATH)
-      const railwayVolumePath = process.env.RAILWAY_VOLUME_MOUNT_PATH;
+      // Проверяем Railway Volume
+      // Railway предоставляет переменную RAILWAY_VOLUME_MOUNT_PATH при подключении Volume
+      const railwayVolumePath = process.env.RAILWAY_VOLUME_MOUNT_PATH || process.env.RAILWAY_VOLUME_PATH;
       if (railwayVolumePath && fs.existsSync(railwayVolumePath)) {
         dbPath = path.join(railwayVolumePath, 'travel.db');
-        logger.log('Обнаружен Railway Volume, используем путь:', dbPath);
+        logger.log('✅ Обнаружен Railway Volume, используем путь:', dbPath);
       } else {
         // Проверяем Render Disk (для обратной совместимости)
         const renderDiskPath = '/opt/render/project/src/data';
@@ -35,6 +36,9 @@ function initDatabase() {
         } else {
           // Локальная разработка или другой хостинг
           dbPath = 'travel.db';
+          logger.log('⚠️ Используется локальный путь для БД:', dbPath);
+          logger.log('⚠️ ВНИМАНИЕ: Данные могут быть потеряны при редеплое!');
+          logger.log('⚠️ Для Railway создайте Volume для постоянного хранения данных.');
         }
       }
     }

@@ -575,6 +575,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744027187368"] {
 
     padding: 30px 40px !important;
 
+    min-height: 178px !important;
+
 }
 
 /* Группа контактов слева (телефон, email) - используем flex-колонку для группировки */
@@ -597,6 +599,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998412"] {
 
     z-index: 4 !important;
 
+    text-align: left !important;
+
 }
 
 body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998412"] {
@@ -604,6 +608,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998412"] {
     top: 495px !important;
 
     width: 143px !important;
+
+    text-align: left !important;
 
 }
 
@@ -625,6 +631,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998424"] {
 
     z-index: 4 !important;
 
+    text-align: left !important;
+
 }
 
 body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998429"] {
@@ -640,6 +648,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998429"] {
     display: block !important;
 
     z-index: 4 !important;
+
+    text-align: left !important;
 
 }
 
@@ -663,6 +673,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998437"] {
 
     z-index: 4 !important;
 
+    text-align: left !important;
+
 }
 
 body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998437"] .tn-atom {
@@ -672,6 +684,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998437"] .tn-atom 
     white-space: normal !important;
 
     height: auto !important;
+
+    text-align: left !important;
 
 }
 
@@ -689,6 +703,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998441"] {
 
     z-index: 4 !important;
 
+    text-align: left !important;
+
 }
 
 body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998441"] .tn-atom {
@@ -698,6 +714,8 @@ body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998441"] .tn-atom 
     white-space: normal !important;
 
     height: auto !important;
+
+    text-align: left !important;
 
 }
 
@@ -845,6 +863,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 8px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998412"] {
@@ -856,6 +876,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         width: 142px !important;
 
         margin-bottom: 8px !important;
+
+        text-align: left !important;
 
     }
 
@@ -871,6 +893,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 8px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998429"] {
@@ -880,6 +904,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         left: calc(50% - 320px + 30px) !important;
 
         width: 151px !important;
+
+        text-align: left !important;
 
     }
 
@@ -895,6 +921,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 4px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998441"] {
@@ -904,6 +932,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         left: calc(50% - 320px + 240px) !important;
 
         width: 111px !important;
+
+        text-align: left !important;
 
     }
 
@@ -1001,6 +1031,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 10px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998412"] {
@@ -1012,6 +1044,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         width: 142px !important;
 
         margin-bottom: 10px !important;
+
+        text-align: left !important;
 
     }
 
@@ -1025,6 +1059,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 10px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998429"] {
@@ -1036,6 +1072,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         width: 151px !important;
 
         margin-bottom: 10px !important;
+
+        text-align: left !important;
 
     }
 
@@ -1049,6 +1087,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
 
         margin-bottom: 8px !important;
 
+        text-align: left !important;
+
     }
 
     body.brand-theme #rec1058341366 .tn-elem[data-elem-id="1744026998441"] {
@@ -1058,6 +1098,8 @@ body.brand-theme #rec1182019096 .tn-elem[data-elem-id="1744026998441"] {
         left: calc(50% - 180px + 124px) !important;
 
         width: 111px !important;
+
+        text-align: left !important;
 
     }
 
