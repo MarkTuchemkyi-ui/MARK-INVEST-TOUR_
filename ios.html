@@ -825,7 +825,7 @@
             imageUrl = tour.image.startsWith('http') ? tour.image : tour.image.startsWith('/') ? tour.image : `/uploads/${tour.image}`;
           }
           
-          const price = tour.price ? `${tour.price.toLocaleString('ru-RU')} ₽` : 'Цена по запросу';
+          const price = tour.price ? `от ${tour.price.toLocaleString('ru-RU')}€` : 'Цена по запросу';
           const dateStart = tour.date_start 
             ? new Date(tour.date_start).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
             : 'Дата уточняется';
