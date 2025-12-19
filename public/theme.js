@@ -27,6 +27,30 @@
         if (ogDescription) {
             ogDescription.setAttribute('content', META_DESCRIPTION);
         }
+
+        // Обновляем og:url на текущий URL страницы
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+            ogUrl.setAttribute('content', window.location.href);
+        }
+
+        // Обновляем og:site_name
+        let ogSiteName = document.querySelector('meta[property="og:site_name"]');
+        if (!ogSiteName) {
+            ogSiteName = document.createElement('meta');
+            ogSiteName.setAttribute('property', 'og:site_name');
+            document.head.appendChild(ogSiteName);
+        }
+        ogSiteName.setAttribute('content', BRAND_NAME);
+
+        // Обновляем canonical на текущий URL страницы
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.setAttribute('rel', 'canonical');
+            document.head.appendChild(canonical);
+        }
+        canonical.setAttribute('href', window.location.href);
     }
 
     function replaceBrandText() {

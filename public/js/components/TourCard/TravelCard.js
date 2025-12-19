@@ -112,10 +112,24 @@
             if (this.tour.date_start && this.tour.date_end) {
                 const startDate = new Date(this.tour.date_start);
                 const endDate = new Date(this.tour.date_end);
-                return `${startDate.getDate()} - ${endDate.getDate()} ${endDate.toLocaleDateString('ru-RU', { month: 'long' })} ${endDate.getFullYear()}`;
+                const startFormatted = startDate.toLocaleDateString('ru-RU', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                });
+                const endFormatted = endDate.toLocaleDateString('ru-RU', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                });
+                return `${startFormatted} - ${endFormatted}`;
             } else if (this.tour.date_start) {
                 const startDate = new Date(this.tour.date_start);
-                return `${startDate.getDate()} ${startDate.toLocaleDateString('ru-RU', { month: 'long' })} ${startDate.getFullYear()}`;
+                return startDate.toLocaleDateString('ru-RU', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                });
             }
             return '';
         }

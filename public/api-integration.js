@@ -517,10 +517,24 @@ function createPreorderCard(tour) {
     if (tour.date_start && tour.date_end) {
         const startDate = new Date(tour.date_start);
         const endDate = new Date(tour.date_end);
-        dateText = `${startDate.getDate()} - ${endDate.getDate()} ${endDate.toLocaleDateString('ru-RU', { month: 'long' })} ${endDate.getFullYear()}`;
+        const startFormatted = startDate.toLocaleDateString('ru-RU', { 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric' 
+        });
+        const endFormatted = endDate.toLocaleDateString('ru-RU', { 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric' 
+        });
+        dateText = `${startFormatted} - ${endFormatted}`;
     } else if (tour.date_start) {
         const startDate = new Date(tour.date_start);
-        dateText = `${startDate.getDate()} ${startDate.toLocaleDateString('ru-RU', { month: 'long' })} ${startDate.getFullYear()}`;
+        dateText = startDate.toLocaleDateString('ru-RU', { 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric' 
+        });
     }
     
     // Получаем URL изображения (абсолютный путь)
@@ -624,10 +638,24 @@ function createTravelCard(tour) {
         if (tour.date_start && tour.date_end) {
             const startDate = new Date(tour.date_start);
             const endDate = new Date(tour.date_end);
-            dateText = `${startDate.getDate()} - ${endDate.getDate()} ${endDate.toLocaleDateString('ru-RU', { month: 'long' })} ${endDate.getFullYear()}`;
+            const startFormatted = startDate.toLocaleDateString('ru-RU', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            const endFormatted = endDate.toLocaleDateString('ru-RU', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            dateText = `${startFormatted} - ${endFormatted}`;
         } else if (tour.date_start) {
             const startDate = new Date(tour.date_start);
-            dateText = `${startDate.getDate()} ${startDate.toLocaleDateString('ru-RU', { month: 'long' })} ${startDate.getFullYear()}`;
+            dateText = startDate.toLocaleDateString('ru-RU', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
         }
     }
     

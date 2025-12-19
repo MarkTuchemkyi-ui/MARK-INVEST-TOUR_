@@ -16,12 +16,22 @@
         if (!dateStart) return '';
         
         const startDate = new Date(dateStart);
+        const startFormatted = startDate.toLocaleDateString('ru-RU', { 
+            day: 'numeric', 
+            month: 'long', 
+            year: 'numeric' 
+        });
         
         if (dateEnd) {
             const endDate = new Date(dateEnd);
-            return `${startDate.getDate()} - ${endDate.getDate()} ${endDate.toLocaleDateString('ru-RU', { month: 'long' })} ${endDate.getFullYear()}`;
+            const endFormatted = endDate.toLocaleDateString('ru-RU', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            return `${startFormatted} - ${endFormatted}`;
         } else {
-            return `${startDate.getDate()} ${startDate.toLocaleDateString('ru-RU', { month: 'long' })} ${startDate.getFullYear()}`;
+            return startFormatted;
         }
     }
 

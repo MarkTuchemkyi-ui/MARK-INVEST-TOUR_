@@ -6,6 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Все туры | MARK INVEST TOUR</title>
 <meta name="description" content="Все доступные туры MARK INVEST TOUR" />
+<meta property="og:title" content="Все туры | MARK INVEST TOUR" />
+<meta property="og:description" content="Все доступные туры MARK INVEST TOUR" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="MARK INVEST TOUR" />
+<link rel="canonical" href="" />
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/black.png" media="(prefers-color-scheme: light)"/>
 <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/images/favicon.svg">
 <link rel="stylesheet" href="/assets/css/tilda-grid-3.0.min.css" type="text/css" media="all" />
@@ -14,6 +19,7 @@
 <script src="/assets/js/jquery-1.10.2.min.js"></script>
 <script src="/assets/js/tilda-scripts-3.0.min.js" charset="utf-8" defer></script>
 <script src="/assets/js/swiper-bundle.min.js"></script>
+<script src="/public/theme.js" defer></script>
 <style>
   :root {
     --mark-bg: #1f1f1f;
@@ -583,7 +589,16 @@
             gridEl.innerHTML = sortedTours.map(tour => {
               const imageUrl = tour.image_url || '/assets/images/hero_background_new.jpg';
               const price = tour.price ? `от ${parseInt(tour.price).toLocaleString('ru-RU')}€` : 'Цена по запросу';
-              const dateText = tour.date_start ? new Date(tour.date_start).toLocaleDateString('ru-RU') : '';
+              let dateText = '';
+              if (tour.date_start && tour.date_end) {
+                const startDate = new Date(tour.date_start);
+                const endDate = new Date(tour.date_end);
+                const startFormatted = startDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+                const endFormatted = endDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+                dateText = `${startFormatted} - ${endFormatted}`;
+              } else if (tour.date_start) {
+                dateText = new Date(tour.date_start).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+              }
 
               return `
                 <a href="/tour/${tour.id}" class="travelCard" data-dynamic-card="true" style="position: relative; width: 100%; max-width: 353px; height: auto; min-height: 520px; background-color: #393a3f; border-radius: 24px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; margin: 0 auto;">

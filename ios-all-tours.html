@@ -283,9 +283,16 @@
           }
           
           const price = tour.price ? `от ${tour.price.toLocaleString('ru-RU')}€` : 'Цена по запросу';
-          const dateStart = tour.date_start 
-            ? new Date(tour.date_start).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
-            : 'Дата уточняется';
+          let dateText = 'Дата уточняется';
+          if (tour.date_start && tour.date_end) {
+            const startDate = new Date(tour.date_start);
+            const endDate = new Date(tour.date_end);
+            const startFormatted = startDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+            const endFormatted = endDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+            dateText = `${startFormatted} - ${endFormatted}`;
+          } else if (tour.date_start) {
+            dateText = new Date(tour.date_start).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+          }
           
           const shortDesc = tour.short_description || tour.description || '';
           const truncatedDesc = shortDesc.length > 120 ? shortDesc.substring(0, 120) + '...' : shortDesc;
@@ -300,7 +307,7 @@
                 ${truncatedDesc ? `<p class="tour-card-description">${truncatedDesc}</p>` : ''}
                 <div class="tour-card-meta">
                   <div class="tour-card-price">${price}</div>
-                  <div class="tour-card-date">${dateStart}</div>
+                  <div class="tour-card-date">${dateText}</div>
                 </div>
               </div>
             </div>

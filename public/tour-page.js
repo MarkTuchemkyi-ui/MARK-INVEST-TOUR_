@@ -50,15 +50,12 @@ function formatDate(dateString) {
 function formatDateRange(startDate, endDate) {
     if (!startDate && !endDate) return '';
     if (!endDate) return formatDate(startDate);
+    if (!startDate) return formatDate(endDate);
     
-    const start = new Date(startDate);
-    const end = new Date(endDate);
+    const startFormatted = formatDate(startDate);
+    const endFormatted = formatDate(endDate);
     
-    if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
-        return `${start.getDate()} - ${end.getDate()} ${end.toLocaleDateString('ru-RU', { month: 'long' })} ${end.getFullYear()}`;
-    } else {
-        return `${formatDate(startDate)} - ${formatDate(endDate)}`;
-    }
+    return `${startFormatted} - ${endFormatted}`;
 }
 
 // Загрузка данных тура
